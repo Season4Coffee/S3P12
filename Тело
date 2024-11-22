@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+class Medicine{
+public: 
+       Medicine();
+       Medicine(std::string st, int y);
+       ~Medicine();
+       std::string getName();
+       void setName(std::string val);
+       int getYear();
+       void setYear(int val);
+private:
+       std::string name:
+       int year;
+};
+int main(){
+       Medicine p1;
+       Medicine p2("Kate",1977);
+       p1.setName("Anita");
+       p1.setYear(1978);
+
+       cout << p1.getName() << " " << p1.getYear() << endl;
+       cout << p2.getName() << " " << p2.getYear() << endl;
+       Medicine p3[3];
+       std::string sbuf;
+       int ybuf;
+       for(int i=0;i<3;i++){
+              cout << "enter name->";
+              cin >> ybuf;
+              p3[i].setYear(ybuf);
+       }
+       for(int i=0;i<3;i++){
+              cout << p3[i].getName() << " " << p3[i].getYear() << endl;
+      }
+       return 0;
+}
+Medicine::Medicine(){
+        name = "Noname";
+        year = 0;
+}
+Medicine::Medicine(std::string st, int y){
+        name = st;
+        year = y;
+}
+std::string Medicine::getName(){
+        return name;
+}
+void Medicine::setName(std::string val){
+        name = val;
+}
+int Medicine::getYear(){
+        return year;
+}
+void Medicine::setYear(int val){
+        year = val;
+}
