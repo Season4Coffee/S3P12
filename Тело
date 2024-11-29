@@ -6,54 +6,57 @@ using namespace std;
 class Medicine{
 public: 
        Medicine();
-       Medicine(std::string st, int y);
-       ~Medicine();
-       std::string getName();
-       void setName(std::string val);
-       int getYear();
-       void setYear(int val);
+       Medicine(int n, struct Medicine* p);
+       int getcalc(int n, struct Medicine* p);
+       void setdb(int n, struct Medicine* p);
 private:
-       std::string name:
-       int year;
 };
 int main(){
        Medicine p1;
-       Medicine p2("Kate",1977);
-       p1.setName("Anita");
-       p1.setYear(1978);
+       Medicine p2(3,2);
+       p1.getcalc(5, struct Medicine* p);
+       p1.setdb(7, struct Medicine* p);   
+}
 
-       cout << p1.getName() << " " << p1.getYear() << endl;
-       cout << p2.getName() << " " << p2.getYear() << endl;
-       Medicine p3[3];
-       std::string sbuf;
-       int ybuf;
-       for(int i=0;i<3;i++){
-              cout << "enter name->";
-              cin >> ybuf;
-              p3[i].setYear(ybuf);
-       }
-       for(int i=0;i<3;i++){
-              cout << p3[i].getName() << " " << p3[i].getYear() << endl;
-      }
-       return 0;
-}
 Medicine::Medicine(){
-        name = "Noname";
-        year = 0;
+        struct Medicine
+        {
+          int no; //номер
+          string name; //название
+          string gldoc; //Глав.врач
+          string coldoc; //кол-во врачей
+          int decr; //кол-во в отпуске
+          int money; //отпускные
+        };
 }
-Medicine::Medicine(std::string st, int y){
-        name = st;
-        year = y;
+Medicine::Medicine(int n, struct Medicine* p){
+         cout << "no: ";
+         cin >> p[i].no;
+         cout << "name: "; 
+         cin >> p[i].name;
+         cout << "gldoc: ";
+         cin >> p[i].gldoc;
+         cout << "coldoc: ";
+         cin >> p[i].coldoc;
+         cout << "decr: ";
+         cin >> p[i].decr;
+         cout << "money: ";
+         cin >> p[i].money;
+        
 }
-std::string Medicine::getName(){
-        return name;
+int Medicine::getcalc(int n, struct Medicine* p){
+         int k = 0;
+         for (int i = 0; i < n; i++)
+           {
+            k += p[i].decr;
+           }
+         return k;
 }
-void Medicine::setName(std::string val){
-        name = val;
-}
-int Medicine::getYear(){
-        return year;
-}
-void Medicine::setYear(int val){
-        year = val;
+void Medicine::setdb(int n, struct Medicine* p){
+    ofstream fout;
+    fout.open("f2.txt");
+    for (int i = 0; i < n; i++) {
+        fout << p[i].no << " " << p[i].name << " " << p[i].gldoc << " " << p[i].coldoc <<" "<< p[i].decr << " " << p[i].money << endl;
+    }
+    fout.close();
 }
